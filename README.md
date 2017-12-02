@@ -14,7 +14,7 @@ La solución es completamente funcional y entretenida. Las reglas son:
   <li>Si se llega a 100 o más unidades se gana el juego. Si se llega a cero se pierde</li>
   <li>Cada apuesta permite un giro de toda la linea. La linea empezará a detenerse al soltar el botón de giro</li>
   <li>Una vez que se ha girado toda la linea se permite el giro de una casilla y se apostará la cantidad que se marque en ese momento. A la finalización de ese giro se deberá volver a apostar por un giro de linea completo para continuar.</li>
-  <li> Hay cinco resultados distintos por casillas cuyos premios son:</li>
+  <li> Hay seis resultados distintos por casillas cuyos premios son:</li>
     <ul>
       <li>Limón y Naranja: 0</li>
       <li>Plátanos: 0.5</li>
