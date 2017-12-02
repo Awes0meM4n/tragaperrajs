@@ -35,4 +35,6 @@ Se mantiene un histórico de saldos en la parte de abajo para ver la evolución.
 
 En un futuro se ampliará la funcionalidad quitando el límite de ganancias de 100 y añadiendo una tabla de puntuaciones de los mayores saldos conseguidos en una partida.
 
+Para probarlo descargate el proyecto y abre el archivo tragaperras/tragaperras.html
+
 Espero que te diviertas.
