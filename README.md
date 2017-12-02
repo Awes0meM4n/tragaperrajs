@@ -8,12 +8,12 @@ Los conocimientos necesarios para completar la práctica están en las etiquetas
 
 El exámen se limitaba a la edición de archivo tragaperras.js, los otros archivos tiene código cuya explicación aún no está contenida en el blog pues no era objeto del curso (Clases)
 
-La solución es completamente funcional y entretenida. Las reglas son:
+La solución completamente funcional y entretenida. Las reglas son:
 <ul>
-  <li>Se puede apostar como máximo el saldo. Se comienza con 50 unidades.</li>
+  <li>Se puede apostar como máximo el saldo. Se comienza con 50 unidades. Se puede cambiar la cantidad para apostar cambiando el valor del cajetín.</li>
   <li>Si se llega a 100 o más unidades se gana el juego. Si se llega a cero se pierde</li>
-  <li>Cada apuesta permite un giro de toda la linea. La linea empezará a detenerse al soltar el botón de giro</li>
-  <li>Una vez que se ha girado toda la linea se permite el giro de una casilla y se apostará la cantidad que se marque en ese momento. A la finalización de ese giro se deberá volver a apostar por un giro de linea completo para continuar.</li>
+  <li>Cada apuesta permite un giro de toda la linea que se iniciará al apretar el botón de giro. La linea empezará a detenerse al soltar el botón de giro</li>
+  <li>Una vez que se ha girado toda la linea se permite el giro de una casilla apretando la casilla que se quiere girar (se coloreará su fondo de amarillo) y se apostará la cantidad que se marque en ese momento. A la finalización de ese giro se deberá volver a apostar por un giro de linea completo para continuar.</li>
   <li> Hay seis resultados distintos por casillas cuyos premios son:</li>
     <ul>
       <li>Limón y Naranja: 0</li>
