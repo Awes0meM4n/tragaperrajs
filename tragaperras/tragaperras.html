@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="tragaperras.css"></link>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+<script type="text/javascript" src="lanyu.common.js"></script>
+<script type="text/javascript" src="slot.js"></script>
+<script type="text/javascript" src="banca.js"></script>
+<script type="text/javascript" src="tragaperras.js"></script>
+<title>TragaperraJS </title>
+</head>
+<body>
+
+<div id="encabezado">
+  TragaperraJS
+</div>
+<div id="maquina">
+  <div id="lineaSlots">
+    <div class="slot">
+      <img>
+    </div>
+    <div class="slot">
+      <img>
+    </div>
+    <div class="slot">
+      <img>
+    </div>
+  </div>
+</div>
+<div id="controles">
+	<div id="apuesta" class="iconos">
+		Apuesta: <input  type="text" value="10"/>
+	</div>
+	<div id="spinner" class="iconos" onmouseup="parar()">
+		<i class="fa fa-refresh" aria-hidden="true"></i>
+		<span id="textoSpinner" > Girar </span>
+		<i class="fa fa-refresh" aria-hidden="true"></i>
+	</div>
+</div>
+<div id="banco">
+	<div id="cajetin" class="iconos"><span></span> <i class="fa fa-money" aria-hidden="true"></i></div>
+	<div id="saldo" class="iconos">Tu saldo es: <span></span> <i class="fa fa-money" aria-hidden="true"></i>
+	</div>
+	<div id="grafico"></div>
+</div>
+<div id="creditos" style="font-style: italic;">
+	<div>Todos los derechos reservados por </div>
+	<div class="iconos" onclick="window.open('https://lanyu-estudio.itch.io/', '_self')"><i class="fa fa-globe" aria-hidden="true"></i> LanyuEStudio</div>
+</div>
+
+<script type="text/javascript">
+
+	//Funcion banca
+	function getApuesta(){
+		var apuestaMarcada = document.querySelector("#apuesta input").value;
+		if(!isNaN(apuestaMarcada) && apuestaMarcada <= banco.getSaldo() && apuestaMarcada > 0)
+			cambiarIcono("cajetin", "Apuestas " + apuestaMarcada); 
+		else {
+			alert("Apuesta no válida");
+			apuestaMarcada = 0;
+		}
+		banco.apuesta = apuestaMarcada;
+		
+		return banco.getApuesta();
+	}
+	
+	//Funciones Spinner
+	function girar() {
+		if(banco.getSaldo() == 0){
+			alert("Has perdido todo tu dinero. Vuelve a intentarlo.");
+			fin();
+		}
+		else if(giroAceptado()){
+			girarLineaSlots();
+			cambiarIcono("spinner", "Girando", "refresh");
+			activarElemento(document.querySelector("#maquina"), true);
+			resetSlots();
+		}
+	}
+	
+	function parar() {
+		if(estaGirando()){
+			pararLineaSlots(capasSlot);
+			activarElemento(spinner, false);
+		}
+	}
+	
+	//Funciones Saldo
+	notificarSaldo = function(){
+		if(banco.saldos.length > 1){
+			var ganancia = banco.getSaldo() - banco.getSaldoHistorico(1);
+			if(ganancia >= 0){
+				if(banco.getSaldo() >= 100){
+					alert("Has roto la banca. Fin del Juego");
+					fin();
+				}
+				cambiarIcono("cajetin", "Ganas " + ganancia);
+			}
+		}
+		cambiarIcono("saldo", banco.getSaldo());
+		mostrarHistorial();
+		activarElemento(spinner, true);
+		cambiarIcono("spinner", "Girar", "star");
+	}
+	
+	function mostrarHistorial(){
+		var grafico = document.getElementById("grafico");
+		vaciarElemento(grafico);
+		var inicio = banco.saldos.length > limiteSaldoParaMostrar ? limiteSaldoParaMostrar - 1 : banco.saldos.length - 1; 
+		for(var i = inicio; i >= 0 ; i--){
+			var signo = banco.getSaldoHistorico(i) - banco.getSaldoHistorico(i + 1) < 0 ? "Negativo" : "Positivo";
+			var celda = document.createElement("div");
+			celda.className = "celdaGrafico";
+			var valor = document.createElement("div");
+			valor.className = "valorSaldo saldo" + signo;
+			valor.textContent = Math.round(banco.getSaldoHistorico(i));
+			celda.appendChild(valor);
+			var barra = document.createElement("div");
+			barra.className = "barraGrafico barra" + signo;
+			barra.style.height = ((banco.getSaldoHistorico(i) < 100? banco.getSaldoHistorico(i) : 100)*.9) + "%";
+			celda.appendChild(barra);
+			grafico.appendChild(celda);
+		}
+	}
+	
+	//Funcion Fin de Juego
+	function esBancarrota(){
+		return banco.getSaldo() >= 100;
+	}
+	
+	function fin(){
+		document.getElementById("controles").removeChild(document.getElementById("spinner"));
+		activarElemento(document.querySelector("#maquina"), false);
+	}
+	
+	//Inicializar
+	var spinner = document.getElementById("spinner");
+	spinner.addEventListener("mousedown", girar);
+	
+	var capasSlot = document.getElementsByClassName("slot");
+	slotsActuales = new Array(capasSlot.length);
+	
+	for(let i = 0; i < capasSlot.length; i++){
+		capasSlot[i].onmousedown = function(event){
+			banco.apostar(getApuesta());
+			girarSlot(slotsActuales, i);
+			event.currentTarget.style.background = "yellow";
+		};
+		capasSlot[i].onmouseup = function(event){
+			pararGiro();
+			activarElemento(document.querySelector("#maquina"), false);
+		};
+	}
+	
+	function resetSlots(){
+		for(var i = 0; i < capasSlot.length; i++){
+			capasSlot[i].style = null;
+		}
+	}
+
+	for(var i = 0; i < slotsActuales.length; i++){
+		cargarSlot(slotsActuales, i, slotItems[0]);
+	}
+	banco = new Banca(50);
+	notificarSaldo();
+</script>
+</body>
+</html>
