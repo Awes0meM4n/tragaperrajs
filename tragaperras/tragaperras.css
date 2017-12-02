@@ -1,0 +1,168 @@
+@CHARSET "UTF-8";
+
+:root {
+	--color-fondo-slot: white;
+	--color-marco-alt: #004080;
+	--ancho-slot: 200px;
+	--padding-slot: 5px;
+	//--alto-slot: 200px;
+	/*Calculadas*/
+	--ancho-linea-slots: calc((var(--ancho-slot) + var(--padding-slot)*2)*3);
+}
+
+* {
+	font-family: "Open Sans",arial,x-locale-body,sans-serif;
+}
+
+body {
+	width: 800px;
+	margin: auto;
+	background-color: #c0c0c0;
+}
+
+#encabezado {
+	font-size: 150%;
+	background-color: #008000;
+	color:white;
+	font-weight: bold;
+	padding: .8em;
+}
+
+div {
+	text-align: center;
+	border-radius: 1em;
+	margin: 1em 0;
+}
+
+#maquina, #lineaSlots, #grafico, #controles, #creditos {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#maquina {
+	margin: auto;
+	height: 300px;
+	background-color: var(--color-marco-alt);
+}
+
+#lineaSlots {
+	/*margin: auto;
+    display: inline-block;
+    width: var(--ancho-linea-slots);
+    background-color: red;*/
+	margin: auto;
+	//height: var(--ancho-linea-slots);
+	width: var(--ancho-linea-slots);
+	background-color: ligthGrey;
+}
+
+.slot {
+	float: left;
+	width: var(--ancho-slot);
+	heigth: var(--ancho-slot);
+	background-color: var(--color-fondo-slot);
+	margin: auto;
+	border-color: gray;//#003162;
+	border-style: solid;
+}
+
+.slot img {
+	width: 90%;
+	display: block;
+    margin: var(--padding-slot);
+}
+
+#spinner, #apuesta, #banco {
+	font-size: 120%;
+}
+
+#spinner, #apuesta {
+	width: 45%;
+}
+
+.iconos {
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  background-color: #558000;
+  text-decoration:none;
+}
+
+#cajetin {
+	background-color: #8c8c00;
+}
+
+#controles input {
+	width: 3em;
+	text-align: right;
+}
+
+#saldo {
+	background-color: var(--color-marco-alt);
+}
+
+#banco{
+	display: block;
+}
+
+#controles div {
+	margin: 0 .5em;
+}
+
+#apuesta{
+	background-color: #8c8c00;
+}
+
+/* Barras en parte inferior
+*  https://stackoverflow.com/a/20735805/2443951
+*/
+#grafico{
+	height: 20em;
+	background: linear-gradient(transparent, #a9a485);
+	display:table;
+	margin: auto;
+	font-size: 75%;
+}
+
+.celdaGrafico {
+   width: 3em;
+   height: 100%;
+   vertical-align: bottom;
+   display:table-cell;
+}
+
+.barraGrafico{
+	margin: .2em .4em;
+	box-shadow: .2em .2em .2em #888888
+}
+
+.barraPositivo{
+	background-color: green;
+}
+
+.barraNegativo{
+	background-color: red;
+}
+
+.valorSaldo{
+	margin-bottom: -1.8em;
+	font-weight: bold;
+}
+
+.valorPositivo{
+	color: #004a00;
+}
+
+.valorNegativo{
+	color: #4a0000;
+}
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+#creditos div{
+	margin: 0 .5em;
+}
