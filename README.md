@@ -1,4 +1,4 @@
-# tragaperrajs
+# TragaperraJS
 Slot Machine in JS / Máquina tragaperras en JS
 
 Este proyecto fue creado para el examen final de un curso que impartí de JavaScript (JS).
