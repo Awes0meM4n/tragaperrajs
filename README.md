@@ -35,6 +35,6 @@ Se mantiene un histórico de saldos en la parte de abajo para ver la evolución.
 
 En un futuro se ampliará la funcionalidad quitando el límite de ganancias de 100 y añadiendo una tabla de puntuaciones de los mayores saldos conseguidos en una partida.
 
-Para probarlo acude a la pestaña <a href="https://github.com/Awes0meM4n/tragaperrajs/releases">releases</a> y escoge la versión que prefieras, <a href="https://itch.io/embed/215634">juégalo directamente en itch.io</a> o descárgate el proyecto (se debe abrir el archivo tragaperras/tragaperras.html con tu navegador - no soportado por IE).
+Para probarlo acude a la pestaña <a href="https://github.com/Awes0meM4n/tragaperrajs/releases">releases</a> y escoge la versión que prefieras, <a href="https://lanyu-estudio.itch.io/jslot-machine-tragaperrajs-">juégalo directamente en itch.io</a> o descárgate el proyecto (se debe abrir el archivo tragaperras/tragaperras.html con tu navegador - no soportado por IE).
 
 Espero que te diviertas.
