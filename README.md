@@ -1,6 +1,7 @@
 # TragaperraJS
 Slot Machine in JS / Máquina tragaperras en JS
 
+<img src="https://raw.githubusercontent.com/Awes0meM4n/tragaperrajs/master/UI%20tragaperras.png" alt="imagen de una jugada"/>
 Este proyecto fue creado para el examen final de un curso que impartí de JavaScript (JS). Aquí puedes acceder al <a href="http://hijosdelspectrum.blogspot.com.es/2017/10/javascript-fundamentos.html">contenido del curso</a>.
 Una copia del examen planteado se puede descargar desde este repositorio.
 
